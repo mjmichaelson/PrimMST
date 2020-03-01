@@ -243,7 +243,7 @@ float PrimMST(int V, int dimension) {
 
 int main() {
     int numtrials = 5;
-    for (int i = 17; i > 6 ; i--) {
+    for (int i = 7; i < 18; i++) {
         int numpoints = pow(2, i);
         for (int dimension = 0; dimension < 4; dimension++) {
             if (dimension != 1) {
