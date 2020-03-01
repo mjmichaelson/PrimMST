@@ -185,11 +185,9 @@ float PrimMST(int V, int dimension) {
 
         // Add edges only for this vertex.
         for (int i = 0; i < V; i++) {
+            float weight;
             if (dimension == 0) {
-                float weight = randf();
-                if (weight < threshold && i != u) {
-                    addEdge(G, u, i, weight); 
-                } 
+                weight = randf();
             }
             if (dimension > 0) {
                 float sumSquaredDiff = 0;
@@ -198,10 +196,10 @@ float PrimMST(int V, int dimension) {
                     float vCoord = randf();
                     sumSquaredDiff += pow(uCoord - vCoord, 2);
                 }
-                float weight = pow(sumSquaredDiff, .5);
-                if (weight < threshold && i != u) {
-                    addEdge(G, u, i, weight); 
-                } 
+                weight = pow(sumSquaredDiff, .5);     
+            }
+            if (weight < threshold && i != u) {
+                addEdge(G, u, i, weight); 
             }
         }
 
