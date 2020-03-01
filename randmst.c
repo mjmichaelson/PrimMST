@@ -225,38 +225,17 @@ float PrimMST(int V, int dimension) {
 } 
 
 
-// int main(int argc, char** argv) { 
-//     srand(time(0));
-//     int numpoints = atoi(argv[2]);
-//     int numtrials = atoi(argv[3]);
-//     int dimension = atoi(argv[4]);
-//     int V = atoi(argv[2]);
-//     float sumAverages = 0.;
-//     for (int i = 0; i < numtrials; i++) {    
-//         sumAverages += PrimMST(numpoints, dimension);
-//     }
-//     float average = sumAverages / numtrials;
-//     printf("%f %i %i %i\n", average, numpoints, numtrials, dimension);
-//     return 0;
-// } 
-
-
-int main() {
-    int numtrials = 5;
-    for (int i = 7; i < 18; i++) {
-        int numpoints = pow(2, i);
-        for (int dimension = 0; dimension < 4; dimension++) {
-            if (dimension != 1) {
-                float sumAverages = 0.;
-                for (int trial = 0; trial < numtrials; trial++) {    
-                    sumAverages += PrimMST(numpoints, dimension);
-                }
-                float average = sumAverages / numtrials;
-                printf("%f %i %i %i\n", average, numpoints, numtrials, dimension);
-            }
-        }
+int main(int argc, char** argv) { 
+    srand(time(0));
+    int numpoints = atoi(argv[2]);
+    int numtrials = atoi(argv[3]);
+    int dimension = atoi(argv[4]);
+    int V = atoi(argv[2]);
+    float sumAverages = 0.;
+    for (int i = 0; i < numtrials; i++) {    
+        sumAverages += PrimMST(numpoints, dimension);
     }
-
-
+    float average = sumAverages / numtrials;
+    printf("%f %i %i %i\n", average, numpoints, numtrials, dimension);
     return 0;
-}
+} 
