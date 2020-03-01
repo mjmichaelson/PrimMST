@@ -184,7 +184,7 @@ float PrimMST(int V, int dimension) {
         int u = heapNode->v; 
 
         // Add edges only for this vertex.
-        for (int i = 0; i < V; i++) {
+        for (int v = 0; v < V; i++) {
             float weight;
             if (dimension == 0) {
                 weight = randf();
@@ -198,8 +198,8 @@ float PrimMST(int V, int dimension) {
                 }
                 weight = pow(sumSquaredDiff, .5);     
             }
-            if (weight < threshold && i != u) {
-                addEdge(G, u, i, weight); 
+            if (weight < threshold && u != v) {
+                addEdge(G, u, v, weight); 
             }
         }
 
