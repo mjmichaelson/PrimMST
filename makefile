@@ -1,2 +1,2 @@
 all:
-	gcc -o randmst randmst.c -lm
+	gcc -std=c99 -o randmst randmst.c -lm
