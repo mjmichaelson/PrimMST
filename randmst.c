@@ -153,7 +153,11 @@ float randf() {
 }
 
 float k(int n, int dimension) {
-    return pow(n, -0.5 / (dimension + 1));
+    return 1;
+    if (dimension == 4) {
+        return pow(n, -0.1);
+    }
+    return pow(n, -0.5);
 }
 
   
