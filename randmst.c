@@ -152,8 +152,8 @@ float randf() {
     return (float) rand() / RAND_MAX;
 }
 
-float k(int n) {
-    return pow(n, -0.5);
+float k(int n, int dimension) {
+    return pow(n, -0.5 / (dimension + 1));
 }
 
   
@@ -162,11 +162,11 @@ float PrimMST(int V, int dimension) {
     float dist[V]; 
     int d = 2;
     if (V > 4) 
-        d = k(V) * (V - 1) / 2;
+        d = (V - 1) / 2;
    
     Heap* H = createHeap(V, d); 
 
-    float threshold = k(V);
+    float threshold = k(V, dimension);
 
     for (int v = 1; v < V; ++v) { 
         dist[v] = 2.; 
@@ -184,7 +184,7 @@ float PrimMST(int V, int dimension) {
         int u = heapNode->v; 
 
         // Add edges only for this vertex.
-        for (int v = 0; v < V; i++) {
+        for (int v = 0; v < V; v++) {
             float weight;
             if (dimension == 0) {
                 weight = randf();
