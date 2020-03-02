@@ -162,7 +162,7 @@ float PrimMST(int V, int dimension) {
     float dist[V]; 
     int d = 2;
     if (V > 4) 
-        d = (V - 1) / 2;
+        d = k(V, dimension) * (V - 1) / 2;
    
     Heap* H = createHeap(V, d); 
 
@@ -184,10 +184,12 @@ float PrimMST(int V, int dimension) {
         int u = heapNode->v; 
 
         // Add edges only for this vertex.
-        for (int v = 0; v < V; v++) {
-            float weight;
+        for (int i = 0; i < V; i++) {
             if (dimension == 0) {
-                weight = randf();
+                float weight = randf();
+                if (weight < threshold && i != u) {
+                    addEdge(G, u, i, weight); 
+                } 
             }
             if (dimension > 0) {
                 float sumSquaredDiff = 0;
@@ -196,10 +198,10 @@ float PrimMST(int V, int dimension) {
                     float vCoord = randf();
                     sumSquaredDiff += pow(uCoord - vCoord, 2);
                 }
-                weight = pow(sumSquaredDiff, .5);     
-            }
-            if (weight < threshold && u != v) {
-                addEdge(G, u, v, weight); 
+                float weight = pow(sumSquaredDiff, .5);
+                if (weight < threshold && i != u) {
+                    addEdge(G, u, i, weight); 
+                } 
             }
         }
 
